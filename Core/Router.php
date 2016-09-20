@@ -1,5 +1,7 @@
 <?php
 
+    namespace App;
+
     class Router
     {
 
@@ -11,7 +13,7 @@
         public static function load($file)
         {
             $router = new static();
-            require $file;
+            require '../' . $file;
 
             return $router;
         }
@@ -30,7 +32,7 @@
         {
             if (array_key_exists($uri, $this->routes[ $requestType ]))
             {
-                return $this->routes[ $requestType ][ $uri ] . '.php';
+                return '../' . $this->routes[ $requestType ][ $uri ] . '.php';
             }
 
             throw new Exception('Not route');
